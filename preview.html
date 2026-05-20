@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Malik Abdul Azis | Portfolio</title>
+
+<meta name="description" content="Portfolio Malik Abdul Azis - Desainer Grafis dan Teknisi Komputer">
+<meta name="keywords" content="portfolio, desain grafis, teknisi komputer, editing, branding">
+<meta name="author" content="Malik Abdul Azis">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#0b0b0b;
+    --card:#141414;
+    --orange:#ff6b00;
+    --orange2:#ff9d00;
+    --text:#ffffff;
+    --muted:#b5b5b5;
+    --border:rgba(255,107,0,0.2);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:radial-gradient(circle at top right,#1d1207 0%,#0b0b0b 35%);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+}
+
+/* background glow */
+
+.glow{
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:rgba(255,107,0,0.08);
+    filter:blur(120px);
+    z-index:-1;
+}
+
+.glow.one{
+    top:-100px;
+    left:-150px;
+}
+
+.glow.two{
+    bottom:-100px;
+    right:-150px;
+}
+
+/* navbar */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:1rem 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,0.65);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    z-index:1000;
+}
+
+.logo{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:2rem;
+    color:var(--orange);
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:flex;
+    gap:2rem;
+    list-style:none;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+    font-size:0.95rem;
+}
+
+.nav-links a:hover{
+    color:var(--orange);
+}
+
+.menu-toggle{
+    display:none;
+    background:none;
+    border:none;
+    color:white;
+    font-size:1.8rem;
+    cursor:pointer;
+}
+
+/* hero */
+
+.hero{
+    min-height:100vh;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    align-items:center;
+    padding:8rem 6%;
+    gap:4rem;
+}
+
+.hero-label{
+    color:var(--orange2);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:0.9rem;
+    margin-bottom:1rem;
+}
+
+.hero h1{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(4rem,10vw,7rem);
+    line-height:0.9;
+    letter-spacing:3px;
+}
+
+.hero h1 span{
+    color:var(--orange);
+}
+
+.hero p{
+    margin-top:1.5rem;
+    color:var(--muted);
+    line-height:1.9;
+    max-width:580px;
+}
+
+.hero-buttons{
+    margin-top:2rem;
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:0.95rem 1.8rem;
+    border-radius:10px;
+    text-decoration:none;
+    transition:0.3s;
+    font-weight:600;
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,var(--orange),var(--orange2));
+    color:black;
+}
+
+.btn-secondary{
+    border:1px solid var(--border);
+    color:white;
+    background:rgba(255,255,255,0.03);
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.hero-image{
+    position:relative;
+    display:flex;
+    justify-content:center;
+}
+
+.hero-image::before{
+    content:"";
+    position:absolute;
+    width:360px;
+    height:360px;
+    border-radius:50%;
+    background:rgba(255,107,0,0.18);
+    filter:blur(60px);
+}
+
+.hero-image img{
+    width:350px;
+    height:350px;
+    object-fit:cover;
+    border-radius:24px;
+    border:2px solid var(--border);
+    position:relative;
+    z-index:1;
+}
+
+/* section */
+
+section{
+    padding:6rem 6%;
+}
+
+.section-label{
+    color:var(--orange2);
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-size:0.85rem;
+    margin-bottom:0.8rem;
+}
+
+.section-title{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:3.5rem;
+    margin-bottom:3rem;
+    letter-spacing:2px;
+}
+
+.section-title em{
+    color:var(--orange);
+    font-style:normal;
+}
+
+/* cards */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:1.5rem;
+}
+
+.card{
+    background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:2rem;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(255,107,0,0.45);
+}
+
+.card h3{
+    color:var(--orange);
+    margin-bottom:1rem;
+}
+
+.card p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+/* portfolio */
+
+.portfolio-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:1.5rem;
+}
+
+.portfolio-item{
+    overflow:hidden;
+    border-radius:22px;
+    background:var(--card);
+    border:1px solid var(--border);
+    transition:0.3s;
+}
+
+.portfolio-item:hover{
+    transform:translateY(-6px);
+}
+
+.portfolio-item img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+}
+
+.portfolio-content{
+    padding:1.3rem;
+}
+
+.portfolio-content h3{
+    color:var(--orange);
+    margin-bottom:0.6rem;
+}
+
+.portfolio-content p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* contact */
+
+.contact-box{
+    background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+    border:1px solid var(--border);
+    padding:2rem;
+    border-radius:24px;
+}
+
+.contact-item{
+    margin-bottom:1.5rem;
+}
+
+.contact-item h4{
+    color:var(--orange);
+    margin-bottom:0.5rem;
+}
+
+/* footer */
+
+footer{
+    padding:2rem;
+    text-align:center;
+    color:var(--muted);
+    border-top:1px solid var(--border);
+}
+
+/* responsive */
+
+@media(max-width:950px){
+
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-image{
+        order:-1;
+    }
+
+    .hero-image img{
+        width:280px;
+        height:280px;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:80px;
+        right:20px;
+        flex-direction:column;
+        background:#111;
+        padding:1rem 1.5rem;
+        border-radius:14px;
+        border:1px solid var(--border);
+        display:none;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+<nav>
+    <div class="logo">MALIK</div>
+
+    <button class="menu-toggle">☰</button>
+
+    <ul class="nav-links">
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#services">Layanan</a></li>
+        <li><a href="#portfolio">Portofolio</a></li>
+        <li><a href="#experience">Pengalaman</a></li>
+        <li><a href="#contact">Kontak</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+
+    <div>
+
+        <div class="hero-label">
+            Portfolio Website
+        </div>
+
+        <h1>
+            MALIK <span>ABDUL AZIS</span>
+        </h1>
+
+        <p>
+            Desainer grafis dan teknisi komputer yang menggabungkan
+            kreativitas visual dengan kemampuan teknis untuk
+            menghasilkan desain modern, branding profesional,
+            serta solusi troubleshooting dan maintenance perangkat.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#portfolio" class="btn btn-primary">
+                Lihat Portofolio
+            </a>
+
+            <a href="#contact" class="btn btn-secondary">
+                Hubungi Saya
+            </a>
+        </div>
+
+    </div>
+
+    <div class="hero-image">
+        <img src="images/profile.png" alt="Foto Malik Abdul Azis">
+    </div>
+
+</section>
+
+<section id="about">
+
+    <div class="section-label">
+        Tentang Saya
+    </div>
+
+    <h2 class="section-title">
+        Creative & <em>Technical</em>
+    </h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Desain Grafis</h3>
+
+            <p>
+                Membuat poster, banner, logo, branding,
+                kemasan produk, dan desain media sosial
+                dengan tampilan modern dan profesional.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Teknisi Komputer</h3>
+
+            <p>
+                Troubleshooting, cleaning laptop,
+                instalasi software, optimasi sistem,
+                dan maintenance komputer.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Administrasi</h3>
+
+            <p>
+                Mengelola dokumen, QC soal tryout,
+                merapikan file, serta membantu
+                manajemen administrasi digital.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="services">
+
+    <div class="section-label">
+        Layanan
+    </div>
+
+    <h2 class="section-title">
+        My <em>Services</em>
+    </h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Poster & Banner</h3>
+
+            <p>
+                Desain visual promosi untuk kebutuhan
+                event, bisnis, dan media sosial.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Brand Identity</h3>
+
+            <p>
+                Membuat identitas visual seperti
+                logo, packaging, dan branding produk.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Maintenance PC</h3>
+
+            <p>
+                Cleaning dan perawatan perangkat
+                komputer agar tetap optimal.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="portfolio">
+
+    <div class="section-label">
+        Portofolio
+    </div>
+
+    <h2 class="section-title">
+        Featured <em>Projects</em>
+    </h2>
+
+    <div class="portfolio-grid">
+
+        <div class="portfolio-item">
+            <img src="images/project1.jpg" alt="Desain Poster">
+
+            <div class="portfolio-content">
+                <h3>Desain Poster</h3>
+
+                <p>
+                    Visual promosi modern dengan
+                    konsep cyber dan clean design.
+                </p>
+            </div>
+        </div>
+
+        <div class="portfolio-item">
+            <img src="images/project2.jpg" alt="Branding Produk">
+
+            <div class="portfolio-content">
+                <h3>Branding Produk</h3>
+
+                <p>
+                    Konsep identitas visual dan
+                    kemasan produk profesional.
+                </p>
+            </div>
+        </div>
+
+        <div class="portfolio-item">
+            <img src="images/project3.jpg" alt="Desain Sosial Media">
+
+            <div class="portfolio-content">
+                <h3>Social Media Design</h3>
+
+                <p>
+                    Konten media sosial dengan
+                    layout modern dan menarik.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="experience">
+
+    <div class="section-label">
+        Pengalaman
+    </div>
+
+    <h2 class="section-title">
+        Work <em>Experience</em>
+    </h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Administrasi & QC Tryout</h3>
+
+            <p>
+                Mengelola file administrasi,
+                melakukan QC soal tryout TKA,
+                menyusun jadwal sekolah,
+                serta merapikan dokumen digital.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="contact">
+
+    <div class="section-label">
+        Kontak
+    </div>
+
+    <h2 class="section-title">
+        Get In <em>Touch</em>
+    </h2>
+
+    <div class="contact-box">
+
+        <div class="contact-item">
+            <h4>Email</h4>
+            <p>azismalikabdul22@gmail.com</p>
+        </div>
+
+        <div class="contact-item">
+            <h4>Telepon</h4>
+            <p>+62 818 0631 4037</p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 Malik Abdul Azis — Portfolio Website
+</footer>
+
+<script>
+
+const toggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+</script>
+
+</body>
+</html>
